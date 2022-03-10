@@ -1,20 +1,29 @@
 import { makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles((theme) => ({
+    App: {
+        minHeight: '100vh'
+    },
     container: {
         padding: '2rem',
         boxSizing: 'border-box',
-        backgroundColor: 'paper'
+        display: 'flex'
     },
     icon: {
         margin: '1rem'
     },
+    searchForm:{
+        display: "flex",
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
 
-    searcher: {
+    search: {
+
         margin: '1rem'
     },
-    btnGo: {
-        margin: '3rem'
+    searchButton:{
+
     },
     card: {
         height: '100%',
@@ -23,7 +32,8 @@ const useStyles = makeStyles((theme) => ({
 
     },
     cardGrid: {
-        padding: '2rem'
+        padding: '2rem',
+        display: 'flex'
     },
     cardMedia: {
         paddingTop: '56.25%'
@@ -32,7 +42,6 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: '1'
     },
     footer: {
-        backgroundColor: 'paper',
         padding: '3rem 0'
     }
 

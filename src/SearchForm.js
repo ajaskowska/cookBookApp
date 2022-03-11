@@ -5,7 +5,9 @@ import useStyles from "./styles";
 import TextField from '@mui/material/TextField'
 import DefaultResultList from "./DefaultResultList";
 import Input from '@mui/material/Input';
-
+import {
+    Link
+} from "react-router-dom";
 
 const SearchForm = () => {
     const classes = useStyles();
@@ -24,8 +26,11 @@ const SearchForm = () => {
     const getRecipes = async () => {
         const response = await fetch(
             `https://api.spoonacular.com/recipes/complexSearch?query=${query}&apiKey=${API_KEY}`
+            //`https://api.spoonacular.com/recipes/656329/information?apiKey=${API_KEY}`
+            // `https://api.spoonacular.com/recipes/716429/information?includeNutrition=false`
         );
         const data = await response.json();
+        console.log(data);
         setRecipes(data.results);
         console.log(data.results);
     };
@@ -49,13 +54,13 @@ const SearchForm = () => {
                  </Grid>
             </Container>
 
-            {recipes.map(el => (
 
-                <Container className={classes.cardGrid} maxWidth='md' >
+                <Container className={classes.cardGrid} maxWidth='md'>
                     <Grid container spacing={2}>
-                        <Grid item xs={12} sm={6} md={4}>
 
-                            <Card key={el.id} className={classes.card}>
+
+
+                            {recipes.map(el => (  <Card key={el.id} className={classes.card}>
                                 <CardMedia
                                             className={classes.cardMedia}
                                             image={el.image}
@@ -65,16 +70,19 @@ const SearchForm = () => {
                                                 {el.title}
                                     </Typography>
                                 </CardContent>
-                                <CardActions>
-                                    <Button size='small' color='primary'>see more</Button>
-                                </CardActions>
+                                <Link to={`/receipe/${el.id}`}>
+                                    <CardActions>
+                                        <Button size='small' color='primary'>see more</Button>
+                                    </CardActions>
+                                </Link>
 
-                            </Card>
-                        </Grid>
+                            </Card>))}
+
+
+
 
                     </Grid>
                 </Container>
-                        ))}
 
         </>
 

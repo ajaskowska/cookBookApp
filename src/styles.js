@@ -5,9 +5,10 @@ const useStyles = makeStyles((theme) => ({
         minHeight: '100vh'
     },
     container: {
-        padding: '2rem',
-        boxSizing: 'border-box',
-        display: 'flex'
+        // padding: '2rem',
+        // boxSizing: 'border-box',
+        display: 'flex',
+        margin: '0 auto'
     },
     icon: {
         margin: '1rem'
@@ -25,6 +26,10 @@ const useStyles = makeStyles((theme) => ({
     searchButton:{
 
     },
+    ala: {
+        display: "flex",
+
+    },
     card: {
         height: '100%',
         display: 'flex',
@@ -32,15 +37,19 @@ const useStyles = makeStyles((theme) => ({
 
     },
     cardGrid: {
-        padding: '2rem',
-        display: 'flex'
+        padding: '3rem',
+
     },
     cardMedia: {
         paddingTop: '56.25%'
     },
     cardContent: {
-        flexGrow: '1'
+        flexGrow: '1',
     },
+    btnSeeMore: {
+
+    },
+
     footer: {
         padding: '3rem 0'
     }

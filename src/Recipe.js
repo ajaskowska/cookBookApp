@@ -8,11 +8,19 @@ import {
     useParams
 } from "react-router-dom";
 import useStyles from "./styles";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClock } from "@fortawesome/free-solid-svg-icons";
+
+
+
+
+
+
 function Recipe() {
 
     const classes = useStyles();
     let { id } = useParams();
-    const API_KEY = 'b21d5757a69247b69005e207873d07d2';
+    const API_KEY = '66e98298ae02456b8c5b5e919dbc4a5d';
 
     const [recipe, setRecipe] = useState([]);
     const [ingredients, setIngredients] = useState([]);
@@ -69,6 +77,9 @@ function Recipe() {
                     <Grid item xs sm md>
                         <Typography component={'span'} variant={'body1'}>
                             <QueryBuilderIcon/>
+                            <i className="fa-solid fa-clock"/>
+                            <FontAwesomeIcon icon="clock" />
+
                             <b>Cooks in</b> {recipe.readyInMinutes} minutes
                         <hr/>
                             <RestaurantIcon/>

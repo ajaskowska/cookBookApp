@@ -5,12 +5,12 @@ import useStyles from "./styles";
 const Footer = () => {
     const classes = useStyles();
     return (
-        <footer className={classes.footer}>
+        <footer  className={classes.footer}>
             <Typography variant='h6' align='center' gutterBottom>
-                Footer
+                React app
             </Typography>
             <Typography variant='subtitle1' align='center' color='textSecondary'>
-                Copyright © Your Website 2022.
+                Copyright © Anna Jaśkowska 2022.
             </Typography>
 
         </footer>

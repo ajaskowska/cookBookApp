@@ -14,6 +14,7 @@ import {
     Link
 } from "react-router-dom";
 import Recipe from "./Recipe";
+import About from "./About";
 
 
 const App = () => {
@@ -24,15 +25,8 @@ const App = () => {
         <Router>
             <div>
                 <CssBaseline/>
-                {/*<Bar/>*/}
                 <Header/>
-                {/*<nav>*/}
-                {/*    <ul>*/}
-                {/*        <li>*/}
-                {/*            <Link to={`/`}>Home</Link>*/}
-                {/*        </li>*/}
-                {/*    </ul>*/}
-                {/*</nav>*/}
+
 
                 {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -40,12 +34,16 @@ const App = () => {
                     <Route path="/recipe/:id">
                         <Recipe />
                     </Route>
+                    <Route path="/about">
+                        <About />
+                    </Route>
                     <Route path="/">
                        <div>
                            <Entrance />
                            <SearchForm/>
                        </div>
                     </Route>
+
                 </Switch>
                 <Footer/>
             </div>

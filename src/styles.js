@@ -1,4 +1,5 @@
 import { makeStyles } from '@mui/styles'
+import Image from './images/chef.png';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -30,6 +31,21 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1
     },
+    banner: {
+        backgroundImage: `url(${Image})`,
+        maxWidth: '100%',
+        height: 'auto',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+
+    },
+    quote: {
+        margin: "3rem",
+        padding: '1rem',
+        textAlign: 'center',
+        opacity: '0.5'
+
+    },
     menuButton: {
         marginRight: theme.spacing(2)
     },
@@ -39,6 +55,9 @@ const useStyles = makeStyles((theme) => ({
         },
         fontSize: '30px'
     },
+    textUnderSearchForm: {
+       paddingTop: '2rem'
+    },
     searchForm:{
         display: "flex",
         alignItems: 'center',
@@ -46,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     search: {
-        // width: '300px',
+        width: '30%',
 
         margin: '1rem'
     },
@@ -84,7 +103,8 @@ const useStyles = makeStyles((theme) => ({
     recipesImage: {
         paddingTop: '56.25%',
         display: 'flex',
-        borderRadius: '2px'
+        borderRadius: '2px',
+        width: '100%'
     },
     recipeImg: {
         borderRadius: '5px',
@@ -105,7 +125,8 @@ const useStyles = makeStyles((theme) => ({
       padding: '1rem 0'
     },
     footer: {
-        padding: '3rem 0'
+        padding: '3rem 0',
+        backgroundColor: '#62A5A1'
     }
 
 }));

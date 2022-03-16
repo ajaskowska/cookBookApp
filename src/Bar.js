@@ -1,7 +1,8 @@
-import {AppBar, CssBaseline, Toolbar, Typography} from "@mui/material";
+import {AppBar, CssBaseline, Link, Toolbar, Typography} from "@mui/material";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import React from "react";
 import useStyles from "./styles";
+
 
 const Bar = () => {
     const classes = useStyles();
@@ -10,7 +11,9 @@ const Bar = () => {
         <>
             <AppBar position="relative">
                 <Toolbar>
-                    <MenuBookIcon className={classes.icon}/>
+                    <Link to="/">
+                        <MenuBookIcon className={classes.icon}/>
+                    </Link>
                     <Typography variant="h6">
                         anna cooks
                     </Typography>

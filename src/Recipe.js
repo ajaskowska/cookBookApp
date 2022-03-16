@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Card, CardActions, CardContent, Paper, Container, Grid, Typography} from "@mui/material";
-import {Image} from "@mui/icons-material";
+import {Paper, Container, Grid, Typography} from "@mui/material";
 import QueryBuilderIcon from '@mui/icons-material/QueryBuilder';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import {List} from "@mui/material";
@@ -13,13 +12,15 @@ function Recipe() {
 
     const classes = useStyles();
     let { id } = useParams();
-    const API_KEY = 'ac872cba383045d3935d2fe5307bf553';
+    const API_KEY = 'b21d5757a69247b69005e207873d07d2';
 
     const [recipe, setRecipe] = useState([]);
     const [ingredients, setIngredients] = useState([]);
     const [instruction, setInstruction] = useState([]);
-    const [wine, setWine] = useState("")
-    const [diet, setDiet] = useState([])
+    const [wine, setWine] = useState("");
+    const [diet, setDiet] = useState([]);
+    const [occasions, setOccasions] = useState([]);
+    const [dishType, setDishType] = useState([]);
 
 
 
@@ -36,8 +37,12 @@ function Recipe() {
         // console.log(data.occasions);
         setWine(data.winePairing)
         // console.log(data.winePairing);
-        setDiet(data.diets)
-        // console.log(data.diets);
+        setDiet(data.diets);
+        // console.log(diet);
+        setOccasions(data.occasions);
+        console.log(data.dishTypes);
+        setDishType(data.dishTypes)
+
 
 
     };
@@ -49,35 +54,47 @@ function Recipe() {
 
     return (
         <>
-            <Container className={classes.cardGrid} maxWidth='lg'>
-                <Typography variant='h4' align='center'>
+            <Container className={classes.cardGrid} maxWidth='md'>
+                <Typography variant='h4' align='center' gutterBottom >
                     {recipe.title}
                 </Typography>
-                <img
-                    src={recipe.image}
-                    height={320}
-                />
+
                 <Grid container spacing={2}>
-                    <Grid item s={6} sm={4} md={4}>
+                    <Grid item xs={12}  sm={8} md={8}>
+                        <img className={classes.recipeImg}
+                             src={recipe.image}
+                             alt={recipe.title}
+                        />
+                    </Grid>
+                    <Grid item xs sm md>
                         <Typography component={'span'} variant={'body1'}>
                             <QueryBuilderIcon/>
                             <b>Cooks in</b> {recipe.readyInMinutes} minutes
+                        <hr/>
                             <RestaurantIcon/>
                             <b>Serves</b> {recipe.servings}
+                            <hr/>
+                            <b>Diet</b> {diet.join(", ")}
+                            <hr/>
+                            <b>Occasions</b> {occasions.join(", ")}
+                            <hr/>
+                            <b>Dish type</b> {dishType.join(", ")}
                         </Typography>
                     </Grid>
+
                 </Grid>
+            </Container>
 
-
+                <Container maxWidth='lg'>
                 <Grid container spacing={4}>
-                    <Grid item s={12} sm={4} md={4}>
-                        <Paper elevation={2}>
-                        <Typography component='div' variant='h6'>
+                    <Grid item xs={12} s={12} sm={4} md={4}>
+                        <Paper className={classes.ingredients} elevation={2}>
+                        <Typography align='center' component='div' variant='h6'>
                             Ingredients
                         </Typography>
-                        <List>
+                        <List >
                             {ingredients.map(el => (
-                                <ListItem key={el.id} disableGutters={true}>
+                                <ListItem key={el.id} >
                                     {el.original}
                                 </ListItem>
 
@@ -85,10 +102,9 @@ function Recipe() {
                         </List>
                         </Paper>
                     </Grid>
-                    <Grid item item s={12} sm={8} md={8}>
-                        <Typography component='div' variant='h6'>
+                    <Grid className={classes.method}item xs={12} s={12} sm={8} md={8}>
+                        <Typography align='center' component='div' variant='h6'>
                             Method
-
                         </Typography>
                         <List>
                                 {instruction.map(el => (
@@ -100,13 +116,9 @@ function Recipe() {
                         </List>
                     </Grid>
                 </Grid>
-
-                <Paper elevation={2}>
+                <Typography className={classes.wine} >
                     {wine.pairingText}
-
-                </Paper>
-
-
+                </Typography>
             </Container>
 
         </>

@@ -1,16 +1,30 @@
-import {Button, Card, CardActions, CardContent, CardMedia, Container, Grid, Typography} from "@mui/material";
+import {
+    Button,
+    Card,
+    CardActions,
+    CardContent,
+    CardMedia,
+    Container,
+    Grid,
+    ImageListItem,
+    Typography
+} from "@mui/material";
+import ImageListItemBar from '@mui/material/ImageListItemBar';
+import CardHeader from '@mui/material/CardHeader';
 import React, {useEffect, useState} from "react";
 import useStyles from "./styles";
 import Input from '@mui/material/Input';
 import { Link} from "react-router-dom";
+import { CardActionArea } from '@mui/material';
 
 const SearchForm = () => {
     const classes = useStyles();
-    const API_KEY = 'ac872cba383045d3935d2fe5307bf553';
+    const API_KEY = 'b21d5757a69247b69005e207873d07d2';
 
     const [recipes, setRecipes] = useState([]);
     const [search, setSearch] = useState('')
     const [query, setQuery] = useState('easter')
+    const [page, setPage] = useState([])
 
 
     useEffect(()=> {
@@ -44,32 +58,62 @@ const SearchForm = () => {
             </Container>
 
 
-                <Container className={classes.cardGrid} maxWidth='md'>
-                    <Grid container spacing={4}>
+            <Container className={classes.cardGrid} maxWidth='md'>
+                <Grid container spacing={4}>
                     {recipes.map(el => (
                         <Grid  item  key={el.id} xs={12} s={12} sm={6} md={4}>
                             <Card className={classes.card}>
-                                <CardMedia
-                                    className={classes.cardMedia}
-                                    image={el.image}
-                                />
-                                <CardContent className={classes.cardContent}>
-                                    <Typography  variant='h6'>
-                                        {el.title}
-                                    </Typography>
-                                </CardContent>
-                                <Link to={`/recipe/${el.id}`}>
-                                    <CardActions>
-                                        <Button className={classes.btnSeeMore} size='small' color='primary'>see more</Button>
-                                    </CardActions>
-                                </Link>
+                                <CardActionArea >
+                                    <Link className={classes.link}to={`/recipe/${el.id}`}>
+                                    {/*<CardMedia*/}
+                                    {/*    className={classes.cardMedia}*/}
+                                    {/*    image={el.image}*/}
+                                    {/*/>*/}
+                                    <ImageListItem>
+                                        <img
+                                            src={el.image}/>
+                                        <ImageListItemBar
+                                            title={el.title}
+                                        />
+                                    </ImageListItem>
+                                    </Link>
+                                </CardActionArea>
+
+
+
+                                {/*<CardContent className={classes.cardContent}>*/}
+                                {/*    <Typography  variant='h6'>*/}
+                                {/*        {el.title}*/}
+                                {/*        <br/>*/}
+                                {/*        <Link className={classes.link}to={`/recipe/${el.id}`}>*/}
+
+                                {/*                <Button className={classes.btnSeeMore} size='small' color='primary'>see more</Button>*/}
+
+                                {/*        </Link>*/}
+                                {/*    </Typography>*/}
+                                {/*</CardContent>*/}
+
+
+
+                                {/*<Link className={classes.link}to={`/recipe/${el.id}`}>*/}
+                                {/*    <CardActions className={classes.btnSeeMore}>*/}
+                                {/*        <Button className={classes.btnSeeMore} size='small' color='primary'>see more</Button>*/}
+                                {/*    </CardActions>*/}
+                                {/*</Link>*/}
 
                             </Card>
+
+
                         </Grid>))}
-                    </Grid>
+                </Grid>
 
 
-                </Container>
+            </Container>
+
+
+
+
+
         </>
 
 

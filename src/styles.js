@@ -4,6 +4,9 @@ import { makeStyles } from '@mui/styles'
 const useStyles = makeStyles((theme) => ({
     App: {
         minHeight: '100vh',
+        padding: '0',
+        margin: '0',
+        boxSizing: 'border-box'
 
     },
     container: {
@@ -11,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         margin: '0 auto'
     },
+
     toolbar: {
         color: '#fff'
     },
@@ -60,26 +64,46 @@ const useStyles = makeStyles((theme) => ({
 
     },
     cardGrid: {
-        padding: '3rem',
+        padding: '2rem',
 
     },
     cardMedia: {
         paddingTop: '56.25%'
     },
     cardContent: {
-        // flexGrow: '1',
+        flexGrow: '1',
+        padding: '0 1rem'
+    },
+
+    link: {
+        textDecoration: 'none',
     },
     btnSeeMore: {
-
+        padding: '0'
     },
-    recipeImage: {
+    recipesImage: {
         paddingTop: '56.25%',
-        height: '100%',
-        width: '100%',
         display: 'flex',
+        borderRadius: '2px'
     },
-
-
+    recipeImg: {
+        borderRadius: '5px',
+        display: 'block',
+        flexGrow: '0',
+        width: '100%',
+        height: 'auto',
+        position: 'cover',
+        align: 'center'
+    },
+    ingredients:{
+        padding: '1rem'
+    },
+    method: {
+        padding: '1rem'
+    },
+    wine: {
+      padding: '1rem 0'
+    },
     footer: {
         padding: '3rem 0'
     }

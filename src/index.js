@@ -8,9 +8,14 @@ import App from './App';
 
 
 ReactDOM.render(
-    <ThemeProvider theme={theme}>
-        <App />
-    </ThemeProvider>, document.getElementById('root'));
+    <React.StrictMode>
+        <HashRouter>
+            <ThemeProvider theme={theme}>
+                <App />
+            </ThemeProvider>
+        </HashRouter>
+    </React.StrictMode>
+    , document.getElementById('root'));
 
 
 

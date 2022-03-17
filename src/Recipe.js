@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Paper, Container, Grid, Typography} from "@mui/material";
+import {Paper, ImageListItem, ImageListItemBar, Container, Grid, Typography} from "@mui/material";
 import QueryBuilderIcon from '@mui/icons-material/QueryBuilder';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import {List} from "@mui/material";
@@ -10,7 +10,8 @@ import {
 import useStyles from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faPeopleGroup, faCircleCheck, faCalendarCheck, faBurger} from "@fortawesome/free-solid-svg-icons";
-
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import IconButton from "@mui/material/IconButton";
 
 
 
@@ -21,7 +22,7 @@ function Recipe() {
 
     const classes = useStyles();
     let { id } = useParams();
-    const API_KEY = '66e98298ae02456b8c5b5e919dbc4a5d';
+    const API_KEY = 'b21d5757a69247b69005e207873d07d2';
 
     const [recipe, setRecipe] = useState([]);
     const [ingredients, setIngredients] = useState([]);
@@ -30,6 +31,8 @@ function Recipe() {
     const [diet, setDiet] = useState([]);
     const [occasions, setOccasions] = useState([]);
     const [dishType, setDishType] = useState([]);
+    const [favRecipe , setFavRecipe] = useState({})
+
 
 
 
@@ -38,27 +41,24 @@ function Recipe() {
             `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`
         );
         const data = await response.json();
-        console.log(data);
         setRecipe(data);
         setIngredients(data.extendedIngredients)
-        // console.log(data.extendedIngredients);
         setInstruction(data.analyzedInstructions[0].steps)
-        // console.log(data.occasions);
         setWine(data.winePairing)
-        // console.log(data.winePairing);
         setDiet(data.diets);
-        // console.log(diet);
         setOccasions(data.occasions);
-        console.log(data.dishTypes);
         setDishType(data.dishTypes)
-
-
-
     };
+    const addToFav = e => {
+        setFavRecipe(e);
+        console.log(e)
+    }
 
     useEffect(() => {
         getRecipes();
     }, [])
+
+
 
 
     return (
@@ -70,10 +70,31 @@ function Recipe() {
 
                 <Grid container spacing={2}>
                     <Grid item xs={12}  sm={8} md={8}>
-                        <img className={classes.recipeImg}
-                             src={recipe.image}
-                             alt={recipe.title}
-                        />
+                        <ImageListItem>
+                            <img className={classes.recipeImg}
+                                             src={recipe.image}
+                                             alt={recipe.title}
+                            />
+                            <ImageListItemBar
+                                sx={{
+                                    background:
+                                        'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
+                                        'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+                                }}
+                                position="top"
+                                actionIcon={
+                                    <IconButton
+                                        sx={{ color: 'white' }}
+                                        // onClick={()=> toggleFavAction(recipe)}
+                                    >
+                                        <FavoriteBorderIcon />
+                                    </IconButton>
+                                }
+                                actionPosition="left"
+                            />
+                        </ImageListItem>
+
+
                     </Grid>
                     <Grid item xs sm md>
                         <Typography component={'span'} variant={'body1'}>

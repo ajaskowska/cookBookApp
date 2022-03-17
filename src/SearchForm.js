@@ -12,9 +12,10 @@ import Input from '@mui/material/Input';
 import { Link} from "react-router-dom";
 import { CardActionArea } from '@mui/material';
 
+
 const SearchForm = () => {
     const classes = useStyles();
-    const API_KEY = '66e98298ae02456b8c5b5e919dbc4a5d';
+    const API_KEY = 'b21d5757a69247b69005e207873d07d2';
 
     const [recipes, setRecipes] = useState([]);
     const [search, setSearch] = useState('')
@@ -68,6 +69,9 @@ const SearchForm = () => {
                                         <ImageListItemBar
                                             title={el.title}
                                         />
+
+
+
                                     </ImageListItem>
                                     </Link>
                                 </CardActionArea>

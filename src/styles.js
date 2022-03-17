@@ -4,21 +4,22 @@ import Image from './images/chef.png';
 
 const useStyles = makeStyles((theme) => ({
     App: {
-        minHeight: '100vh',
+        minHeight: '100%',
         padding: '0',
         margin: '0',
         boxSizing: 'border-box'
 
     },
+
+
     container: {
         padding: '2rem',
         display: 'flex',
-        margin: '0 auto'
+        margin: 'auto'
     },
 
-    toolbar: {
-        color: '#fff'
-    },
+    // toolbar: {
+    // },
 
     icon: {
         margin: '1rem'
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     headerOptions: {
         display: "flex",
         flex: 1,
-        justifyContent: "space-evenly"
+        justifyContent: "space-around"
     },
     root: {
         flexGrow: 1
@@ -66,19 +67,16 @@ const useStyles = makeStyles((theme) => ({
 
     search: {
         width: '30%',
-
-        margin: '1rem'
+        margin: '2rem',
     },
     searchButton:{
 
     },
-    ala: {
-        display: "flex",
 
-    },
     card: {
         height: '100%',
         display: 'flex',
+        flexShrink: '1',
         flexDirection: 'column'
 
     },
@@ -124,10 +122,20 @@ const useStyles = makeStyles((theme) => ({
     wine: {
       padding: '1rem 0'
     },
+    about:{
+        textAlign: 'center',
+        listStyle: 'none',
+        lineHeight: '1.5'
+    },
     footer: {
         padding: '3rem 0',
-        backgroundColor: '#62A5A1'
-    }
+        backgroundColor: '#62A5A1',
+        color: 'white'
+
+
+    },
+
+
 
 }));
 export default useStyles;

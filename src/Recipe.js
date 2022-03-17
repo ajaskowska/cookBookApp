@@ -9,7 +9,8 @@ import {
 } from "react-router-dom";
 import useStyles from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock } from "@fortawesome/free-solid-svg-icons";
+import { faClock, faPeopleGroup, faCircleCheck, faCalendarCheck, faBurger} from "@fortawesome/free-solid-svg-icons";
+
 
 
 
@@ -76,20 +77,21 @@ function Recipe() {
                     </Grid>
                     <Grid item xs sm md>
                         <Typography component={'span'} variant={'body1'}>
-                            <QueryBuilderIcon/>
-                            <i className="fa-solid fa-clock"/>
-                            <FontAwesomeIcon icon="clock" />
+                            {/*<QueryBuilderIcon/>*/}
+                           <div><FontAwesomeIcon icon={faClock} /> <b>Cooks in</b> {recipe.readyInMinutes} minutes</div>
 
-                            <b>Cooks in</b> {recipe.readyInMinutes} minutes
                         <hr/>
-                            <RestaurantIcon/>
-                            <b>Serves</b> {recipe.servings}
+                            <div><FontAwesomeIcon icon={faPeopleGroup} /> <b>Serves</b> {recipe.servings}</div>
+
                             <hr/>
-                            <b>Diet</b> {diet.join(", ")}
+                            <div><FontAwesomeIcon icon={faCircleCheck} /> <b>Diet</b> {diet.join(", ")}</div>
+
                             <hr/>
-                            <b>Occasions</b> {occasions.join(", ")}
+                            <div><FontAwesomeIcon icon={faCalendarCheck} /> <b>Occasions</b> {occasions.join(", ")}</div>
+
                             <hr/>
-                            <b>Dish type</b> {dishType.join(", ")}
+                            <div><FontAwesomeIcon icon={faBurger} /> <b>Dish type</b> {dishType.join(", ")}</div>
+
                         </Typography>
                     </Grid>
 

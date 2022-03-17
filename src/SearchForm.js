@@ -18,7 +18,7 @@ const SearchForm = () => {
 
     const [recipes, setRecipes] = useState([]);
     const [search, setSearch] = useState('')
-    const [query, setQuery] = useState('easter')
+    const [query, setQuery] = useState('spring')
 
 
     useEffect(()=> {
@@ -50,13 +50,10 @@ const SearchForm = () => {
                 </Typography>
                     <form className={classes.searchForm} onSubmit={getSearch}>
                             <Input className={classes.search} color='primary'  value={search} onChange={updateSearch}/>
-                            <Button className={classes.searchButton} variant="contained"  type="submit" color="primary">GO</Button>
+                            <Button className={classes.searchButton} variant="contained"  type="submit" color='primary'>GO</Button>
                     </form>
-            </Container>
 
-
-            <Container className={classes.cardGrid} maxWidth='md'>
-                <Grid container spacing={4}>
+                <Grid container spacing={4} className={classes.cardGrid}>
                     {recipes.map(el => (
                         <Grid  item  key={el.id}  s={12} sm={6} md={4}>
                             <Card className={classes.card}>

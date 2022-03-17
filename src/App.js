@@ -37,6 +37,7 @@ const App = () => {
                         <Recipe />
                     </Route>
                     <Route path="/about">
+                        <Entrance />
                         <About />
                     </Route>
                     <Route path="/">

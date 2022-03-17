@@ -9,6 +9,7 @@ import {useMediaQuery} from "@mui/material";
 import { withRouter } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu'
 import useStyles from "./styles";
+import {Container} from "@mui/material";
 
 
 const Header = props => {
@@ -37,10 +38,10 @@ const Header = props => {
             menuTitle: "Home",
             pageURL: "/"
         },
-        {
-            menuTitle: "Favorites",
-            pageURL: "/favorites"
-        },
+        // {
+        //     menuTitle: "Favorites",
+        //     pageURL: "/favorites"
+        // },
         {
             menuTitle: "About",
             pageURL: "/about"
@@ -50,73 +51,76 @@ const Header = props => {
     return (
         <div className={classes.root}>
             <AppBar  position="static">
-                <Toolbar className={classes.toolbar}>
+                <Container maxWidth='lg'>
+                    <Toolbar className={classes.toolbar}>
 
-                    <MenuItem className={classes.title}
-                        variant="h2"
-                        onClick={() => handleButtonClick("/")}
-                    >
-                        anna cooks
-                    </MenuItem>
-                    {isMobile ? (
-                        <>
-                            <IconButton
-                                edge="start"
-                                className={classes.menuButton}
-                                color="inherit"
-                                aria-label="menu"
-                                onClick={handleMenu}
-                            >
-                                <MenuIcon />
-                            </IconButton>
-                            <Menu
-                                id="menu-appbar"
-                                anchorEl={anchorEl}
-                                anchorOrigin={{
-                                    vertical: "top",
-                                    horizontal: "right"
-                                }}
-                                keepMounted
-                                transformOrigin={{
-                                    vertical: "top",
-                                    horizontal: "right"
-                                }}
-                                open={open}
-                                onClose={() => setAnchorEl(null)}
-                            >
-                                {menuItems.map(menuItem => {
-                                    const { menuTitle, pageURL } = menuItem;
-                                    return (
-                                        <MenuItem key={menuTitle} onClick={() => handleMenuClick(pageURL)}>
-                                            {menuTitle}
-                                        </MenuItem>
-                                    );
-                                })}
-                            </Menu>
-                        </>
-                    ) : (
-                        <div className={classes.headerOptions}>
-                            <MenuItem
-                                variant="contained"
-                                onClick={() => handleButtonClick("/")}
-                            >
-                                HOME
-                            </MenuItem>
-                            <MenuItem
-                                variant="contained"
-                                onClick={() => handleButtonClick("/favorites")}
-                            >
-                                FAVORITES
-                            </MenuItem>
-                            <MenuItem
-                                variant="contained"
-                                onClick={() => handleButtonClick("/about")}
-                            >
-                                ABOUT
-                            </MenuItem>
-                        </div>
-                    )}
-                </Toolbar>
+                        <MenuItem className={classes.title}
+                                  variant="h2"
+                                  onClick={() => handleButtonClick("/")}
+                        >
+                            anna cooks
+                        </MenuItem>
+                        {isMobile ? (
+                            <>
+                                <IconButton
+                                    edge="start"
+                                    className={classes.menuButton}
+                                    color="inherit"
+                                    aria-label="menu"
+                                    onClick={handleMenu}
+                                >
+                                    <MenuIcon />
+                                </IconButton>
+                                <Menu
+                                    id="menu-appbar"
+                                    anchorEl={anchorEl}
+                                    anchorOrigin={{
+                                        vertical: "top",
+                                        horizontal: "right"
+                                    }}
+                                    keepMounted
+                                    transformOrigin={{
+                                        vertical: "top",
+                                        horizontal: "right"
+                                    }}
+                                    open={open}
+                                    onClose={() => setAnchorEl(null)}
+                                >
+                                    {menuItems.map(menuItem => {
+                                        const { menuTitle, pageURL } = menuItem;
+                                        return (
+                                            <MenuItem key={menuTitle} onClick={() => handleMenuClick(pageURL)}>
+                                                {menuTitle}
+                                            </MenuItem>
+                                        );
+                                    })}
+                                </Menu>
+                            </>
+                        ) : (
+                            <div className={classes.headerOptions}>
+                                <MenuItem
+                                    variant="contained"
+                                    onClick={() => handleButtonClick("/")}
+                                >
+                                    HOME
+                                </MenuItem>
+                                {/*<MenuItem*/}
+                                {/*    variant="contained"*/}
+                                {/*    onClick={() => handleButtonClick("/favorites")}*/}
+                                {/*>*/}
+                                {/*    FAVORITES*/}
+                                {/*</MenuItem>*/}
+                                <MenuItem
+                                    variant="contained"
+                                    onClick={() => handleButtonClick("/about")}
+                                >
+                                    ABOUT
+                                </MenuItem>
+                            </div>
+                        )}
+                    </Toolbar>
+                </Container>
+
             </AppBar>
         </div>
     );

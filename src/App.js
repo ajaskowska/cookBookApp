@@ -7,6 +7,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Entrance from "./Entrance";
 import SearchForm from "./SearchForm";
+import { HashRouter } from 'react-router-dom'
 import {
     BrowserRouter as Router,
     Switch,
@@ -23,7 +24,7 @@ const App = () => {
     <>
 
 
-        <Router>
+        <HashRouter>
             <div>
                 <CssBaseline/>
                 <Header/>
@@ -48,7 +49,7 @@ const App = () => {
                 </Switch>
                 <Footer/>
             </div>
-        </Router>
+        </HashRouter>
     </>
   );
 }

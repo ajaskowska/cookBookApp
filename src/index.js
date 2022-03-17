@@ -10,11 +10,11 @@ import App from './App';
 
 ReactDOM.render(
     <React.StrictMode>
-        <HashRouter>
+        {/*<HashRouter>*/}
             <ThemeProvider theme={theme}>
                 <App />
             </ThemeProvider>
-        </HashRouter>
+        {/*</HashRouter>*/}
     </React.StrictMode>
     , document.getElementById('root'));
 

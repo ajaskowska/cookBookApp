@@ -2,57 +2,86 @@ import React from 'react';
 import {
     CssBaseline,
 } from "@mui/material";
-import Bar from "./Bar";
-import Header from "./Header";
-import Footer from "./Footer";
-import Entrance from "./Entrance";
-import SearchForm from "./SearchForm";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Entrance from "./components/Entrance";
+import SearchForm from "./components/SearchForm";
 import { HashRouter } from 'react-router-dom'
 import {
-    BrowserRouter as Router,
-    Switch,
+    BrowserRouter,
+    Routes,
     Route,
     Link
 } from "react-router-dom";
-import Recipe from "./Recipe";
-import About from "./About";
+import Recipe from "./components/Recipe";
+import About from "./components/About";
+import Popular from "./components/Popular";
+import Cuisine from './pages/Cuisine'
+
+//2wersja
+import Pages from './pages/Pages'
+import Category from './components/Category';
+import Search from "./components/Search";
+import Diet from "./components/Diet";
+import Searched from "./components/Searched";
+import styled from "styled-components";
+import Bar from './components/Bar'
 
 
-const App = () => {
+
+
+function App() {
 
   return (
     <>
+        {/*<BrowserRouter>*/}
+        {/*    <CssBaseline/>*/}
+        {/*    <Header/>*/}
+        {/*    <Entrance/>*/}
+        {/*    <Search/>*/}
+        {/*    <Category/>*/}
+        {/*    <Pages/>*/}
+        {/*    <Footer/>*/}
+
+        {/*</BrowserRouter>*/}
 
 
-        <HashRouter>
-            <div>
-                <CssBaseline/>
-                <Header/>
+                <BrowserRouter>
+                    <div>
+                    <CssBaseline/>
+                        <Bar/>
 
 
-                {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-                <Switch>
-                    <Route path="/recipe/:id">
-                        <Recipe />
-                    </Route>
-                    <Route path="/about">
-                        <Entrance />
-                        <About />
-                    </Route>
-                    <Route path="/">
-                       <div>
-                           <Entrance />
-                           <SearchForm/>
-                       </div>
-                    </Route>
 
-                </Switch>
+                    <Routes>
+
+                    <Route path='/recipe/:id' element={<Recipe/>} />
+
+                    <Route path="/cuisine/:type" element={<><Search/><Category/><Cuisine/></>}/>
+
+                    {/*<Route path="/popular"  element={<Popular/>}/>*/}
+
+                    {/*<Route path="/about" element={<><About/></>}/>*/}
+
+                    <Route path="/" element={<><Entrance/><Search/><Category/><Popular/><Diet/></>} />
+
+                    <Route path="/searched/:search" element={<><Search/><Category/><Searched/></>}/>
+
+                    </Routes>
+                    </div>
+                </BrowserRouter>
                 <Footer/>
-            </div>
-        </HashRouter>
+
+
+
+
+
+
+
+
     </>
-  );
+
+ );
 }
 
 export default App;

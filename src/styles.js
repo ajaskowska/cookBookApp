@@ -7,19 +7,15 @@ const useStyles = makeStyles((theme) => ({
         minHeight: '100%',
         padding: '0',
         margin: '0',
-        boxSizing: 'border-box'
-
+        boxSizing: 'border-box',
+        fontFamily: 'Montserrat", sans-serif'
     },
-
 
     container: {
         padding: '2rem',
         display: 'flex',
-        margin: 'auto'
+        margin: '0 auto'
     },
-
-    // toolbar: {
-    // },
 
     icon: {
         margin: '1rem'
@@ -35,16 +31,24 @@ const useStyles = makeStyles((theme) => ({
     banner: {
         backgroundImage: `url(${Image})`,
         maxWidth: '100%',
-        height: 'auto',
+        height: '30vh',
         backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        backgroundPosition: 'center',
+        position: "relative",
+        objectFit: "cover"
 
     },
     quote: {
         margin: "3rem",
         padding: '1rem',
         textAlign: 'center',
-        opacity: '0.5'
+        justifyContent: 'center',
+        alignItems: 'center',
+        opacity: '0.6',
+        position:"absolute",
+        bottom: '0%',
+        fontWeight: '600'
+
 
     },
     menuButton: {
@@ -101,7 +105,7 @@ const useStyles = makeStyles((theme) => ({
     recipesImage: {
         paddingTop: '56.25%',
         display: 'flex',
-        borderRadius: '2px',
+        borderRadius: '1rem',
         width: '100%'
     },
     recipeImg: {

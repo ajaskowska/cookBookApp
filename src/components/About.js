@@ -1,8 +1,9 @@
 import {Container, ListItem, ListSubheader, Typography} from "@mui/material";
 import React from "react";
-import useStyles from "./styles";
+import useStyles from "../styles";
 import {Paper} from "@mui/material";
 import {List} from "@mui/material";
+import Popular from "./Popular";
 
 const About = () => {
     const classes = useStyles();
@@ -27,14 +28,8 @@ const About = () => {
                     <br/>
                     oraz do zapoznania się z moim portfolio na <a href='https://github.com/ajaskowska' target="_blank">GitHub</a>
                 </Typography>
+
             </Container>
-
-
-
-
-
-
-
 
         </>
 

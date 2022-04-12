@@ -7,19 +7,22 @@ import {
 } from "@mui/material";
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import React, {useEffect, useState} from "react";
-import useStyles from "./styles";
+import useStyles from "../styles";
 import Input from '@mui/material/Input';
 import { Link} from "react-router-dom";
 import { CardActionArea } from '@mui/material';
+import Category from "./Category";
+import {FaSearch} from "react-icons/fa";
+import styled from "styled-components";
 
 
 const SearchForm = () => {
     const classes = useStyles();
-    const API_KEY = 'b21d5757a69247b69005e207873d07d2';
+    const API_KEY = 'ac872cba383045d3935d2fe5307bf553';
 
     const [recipes, setRecipes] = useState([]);
     const [search, setSearch] = useState('')
-    const [query, setQuery] = useState('spring')
+    const [query, setQuery] = useState('')
 
 
     useEffect(()=> {
@@ -28,7 +31,7 @@ const SearchForm = () => {
 
     const getRecipes = async () => {
         const response = await fetch(
-            `https://api.spoonacular.com/recipes/complexSearch?query=${query}&number=12&apiKey=${API_KEY}`
+            `https://api.spoonacular.com/recipes/complexSearch?query=${query}&number=12&apiKey=${process.env.REACT_APP_API_KEY}`
 
         );
         const data = await response.json();
@@ -47,11 +50,12 @@ const SearchForm = () => {
         <>
             <Container maxWidth="md">
                 <Typography className={classes.textUnderSearchForm} variant="h3" align={"center"} color="textSecondary" gutterBottom>
-                    Find a Recipe
+                    Search for the perfect recipe
                 </Typography>
                     <form className={classes.searchForm} onSubmit={getSearch}>
-                            <Input className={classes.search} color='primary'  value={search} onChange={updateSearch}/>
-                            <Button className={classes.searchButton} variant="contained"  type="submit" color='primary'>GO</Button>
+
+                        <Input className={classes.search} color='primary'  value={search} onChange={updateSearch}/>
+                        <Button className={classes.searchButton} variant="contained"  type="submit" color='primary'>GO</Button>
                     </form>
 
                 <Grid container spacing={4} className={classes.cardGrid}>
@@ -70,14 +74,11 @@ const SearchForm = () => {
                                             title={el.title}
                                         />
 
-
-
                                     </ImageListItem>
                                     </Link>
                                 </CardActionArea>
 
                             </Card>
-
 
                         </Grid>))}
                 </Grid>
@@ -90,5 +91,9 @@ const SearchForm = () => {
     )
 
 }
+
+  
+ 
+
 
 export default SearchForm;

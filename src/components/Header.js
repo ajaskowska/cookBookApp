@@ -8,8 +8,11 @@ import {Menu} from "@mui/material";
 import {useMediaQuery} from "@mui/material";
 import { withRouter } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu'
-import useStyles from "./styles";
+import useStyles from "../styles";
 import {Container} from "@mui/material";
+import styled from "styled-components";
+import {Link} from  "react-router-dom";
+import {useNavigate} from 'react-router-dom'
 
 
 const Header = props => {
@@ -19,6 +22,8 @@ const Header = props => {
     const open = Boolean(anchorEl);
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+    let navigate = useNavigate();
+
 
     const handleMenu = event => {
         setAnchorEl(event.currentTarget);
@@ -30,7 +35,10 @@ const Header = props => {
     };
 
     const handleButtonClick = pageURL => {
-        history.push(pageURL);
+        // history.push(pageURL);
+        <Link to={{pageURL}}/>
+        // navigate(pageURL);
+
     };
 
     const menuItems = [
@@ -38,10 +46,10 @@ const Header = props => {
             menuTitle: "Home",
             pageURL: "/"
         },
-        // {
-        //     menuTitle: "Favorites",
-        //     pageURL: "/favorites"
-        // },
+        {
+            menuTitle: "Popular",
+            pageURL: "/popular"
+        },
         {
             menuTitle: "About",
             pageURL: "/about"
@@ -54,12 +62,12 @@ const Header = props => {
                 <Container maxWidth='lg'>
                     <Toolbar className={classes.toolbar}>
 
-                        <MenuItem className={classes.title}
-                                  variant="h2"
-                                  onClick={() => handleButtonClick("/")}
-                        >
-                            anna cooks
-                        </MenuItem>
+                        {/*<MenuItem className={classes.title}*/}
+                        {/*          variant="h2"*/}
+                        {/*          // onClick={() => handleButtonClick("/")}*/}
+                        {/*>*/}
+                            <Logo onClick={() => navigate('/')}>anna cooks </Logo>
+                        {/*</MenuItem>*/}
                         {isMobile ? (
                             <>
                                 <IconButton
@@ -104,12 +112,12 @@ const Header = props => {
                                 >
                                     HOME
                                 </MenuItem>
-                                {/*<MenuItem*/}
-                                {/*    variant="contained"*/}
-                                {/*    onClick={() => handleButtonClick("/favorites")}*/}
-                                {/*>*/}
-                                {/*    FAVORITES*/}
-                                {/*</MenuItem>*/}
+                                <MenuItem
+                                    variant="contained"
+                                    onClick={() => handleButtonClick("/popular")}
+                                >
+                                    POPULAR
+                                </MenuItem>
                                 <MenuItem
                                     variant="contained"
                                     onClick={() => handleButtonClick("/about")}
@@ -125,5 +133,8 @@ const Header = props => {
         </div>
     );
 };
-
-export default withRouter(Header);
+const Logo = styled.div`
+  font-family: 'Grape Nuts', cursive;
+  font-size: 2rem;
+`
+export default Header;

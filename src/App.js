@@ -34,19 +34,8 @@ function App() {
 
   return (
     <>
-        {/*<BrowserRouter>*/}
-        {/*    <CssBaseline/>*/}
-        {/*    <Header/>*/}
-        {/*    <Entrance/>*/}
-        {/*    <Search/>*/}
-        {/*    <Category/>*/}
-        {/*    <Pages/>*/}
-        {/*    <Footer/>*/}
 
-        {/*</BrowserRouter>*/}
-
-
-                <BrowserRouter>
+                <HashRouter>
                     <div>
                     <CssBaseline/>
                         <Bar/>
@@ -69,7 +58,7 @@ function App() {
 
                     </Routes>
                     </div>
-                </BrowserRouter>
+                </HashRouter>
                 <Footer/>
 
 

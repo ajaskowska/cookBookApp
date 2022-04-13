@@ -3,7 +3,7 @@ import {Typography, CardActionArea, Container, Grid, ImageListItem} from "@mui/m
 import {Link} from "react-router-dom";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import useStyles from "../styles";
-import {SplideSlide, Splide} from "@splidejs/react-splide";
+import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css'
 import {Wrapper} from "./style/Carousel.style";
 import styled from 'styled-components';
@@ -34,12 +34,16 @@ function Popular() {
         // }
 
     }
+
     return (
         <>
             <StyledContainer maxWidth="lg">
-                <Typography variant='h5' gutterBottom={true}>Our most popular picks</Typography>
-            <Splide options={{perPage:3, pagination: false, drag:'free', gap: '3rem'}}>
+                <Typography textAlign='center' variant='h5' gutterBottom={true}>Get inspired</Typography>
+                <StyledTypo variant='h6' gutterBottom={true}>Our most popular picks</StyledTypo>
+            <Splide options={{perPage:3, breakpoints: {480: {perPage: 1}, 640: { perPage: 2,},900: {perPage: 2}}, pagination: false, drag:'free', gap: '3rem', autoplay: true}}
+                >
                 {popular.map(el => (
+
                         <SplideSlide key={el.id}>
                             <StyledCard>
                                     <Link to={`/recipe/${el.id}`}>
@@ -52,6 +56,7 @@ function Popular() {
                                     </Link>
                             </StyledCard>
                         </SplideSlide>
+
                     ))}
             </Splide>
             </StyledContainer>
@@ -88,6 +93,9 @@ img{
     align-items: end;
   }
 `
+const StyledTypo = styled(Typography)`
+  color: rgb(163, 134, 91);
+`
 const Gradient = styled.div`
   z-index: 2;
   position: absolute;
@@ -96,7 +104,7 @@ const Gradient = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
 `
 const StyledContainer = styled(Container)`
-margin: 3rem auto;
+margin: 2rem auto;
 `
 
 

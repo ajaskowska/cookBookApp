@@ -131,13 +131,7 @@ const useStyles = makeStyles((theme) => ({
         listStyle: 'none',
         lineHeight: '1.5'
     },
-    footer: {
-        padding: '3rem 0',
-        backgroundColor: '#62A5A1',
-        color: 'white'
 
-
-    },
 
 
 

@@ -1,11 +1,11 @@
 import {Typography} from "@mui/material";
 import React from "react";
-import useStyles from "../styles";
+import styled from 'styled-components'
 
 const Footer = () => {
-    const classes = useStyles();
+
     return (
-        <footer  className={classes.footer}>
+        <FooterStyled >
             <Typography variant='h6' align='center'  gutterBottom>
                 React app
             </Typography>
@@ -13,7 +13,15 @@ const Footer = () => {
                 Copyright © Anna Jaśkowska 2022.
             </Typography>
 
-        </footer>
+        </FooterStyled>
     )
 }
+
+
+const FooterStyled = styled.footer`
+  padding: 3rem 0;
+  background: #62A5A1;
+  color: white;
+  border-top: solid rgb(163, 134, 91) 1px;
+`
 export default Footer;

@@ -36,8 +36,8 @@ function Diet() {
     return (
         <>
             <StyledContainer maxWidth="lg">
-                <Typography variant='h5' gutterBottom={true}>Our Gluten free picks</Typography>
-                <Splide options={{perPage:4,  pagination: false, drag:'free', gap: '3rem'}}>
+                <StyledTypo variant='h6' gutterBottom={true}>Our Gluten free picks</StyledTypo>
+                <Splide options={{perPage:4,  breakpoints: {480: {perPage: 1}, 640: { perPage: 2,},900: {perPage: 3}}, pagination: false, drag:'free', gap: '3rem', autoplay: true}}>
                     {diet.map(el => (
                             <SplideSlide key={el.id}>
                                 <StyledCard>
@@ -57,6 +57,9 @@ function Diet() {
         </>
     );
 }
+const StyledTypo = styled(Typography)`
+  color: rgb(163, 134, 91);
+`
 const StyledCard = styled.div`
   height: 15rem;
   border-radius: 2rem;
